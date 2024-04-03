@@ -13,7 +13,7 @@ var startBot = &cobra.Command{
 	Short: "This command will start the telegram bot",
 	Long:  "This command will check the TOKEN in env variable and start the bot",
 	Run: func(cmd *cobra.Command, args []string) {
-		var token = os.Getenv("TOKEN")
+		var token = os.Getenv("TELE_TOKEN")
 		if len(token) > 0 {
 			bot.CreateBot(token)
 		} else {

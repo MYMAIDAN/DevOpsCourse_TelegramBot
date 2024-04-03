@@ -17,6 +17,6 @@
 
  ## Run
  ```bash
- source TOKEN <value>
+ source TELE_TOKEN <value>
  ./main start_bot
  ```
