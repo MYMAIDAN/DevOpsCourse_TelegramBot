@@ -14,7 +14,7 @@ func CreateBot(token string) {
 		Poller: &tele.LongPoller{Timeout: 10 * time.Second},
 	}
 
-	b, err := tele.NewBot(pref)
+	kbot, err := tele.NewBot(pref)
 	if err != nil {
 		log.Fatal("Bot is not created")
 		return
@@ -22,10 +22,24 @@ func CreateBot(token string) {
 
 	fmt.Println("bot has been created")
 
-	b.Handle("/hello", func(c tele.Context) error {
+	kbot.Handle("/hello", func(c tele.Context) error {
 		return c.Send("Hello")
 	})
 
-	b.Start()
+	kbot.Handle(tele.OnText, func(m tele.Context) error {
+
+		log.Print(m.Message().Payload, m.Text())
+		payload := m.Message().Payload
+
+		switch payload {
+		case "hello":
+			err = m.Send(fmt.Sprintf("Hello I'm kbot %s!"))
+		}
+
+		return err
+
+	})
+
+	kbot.Start()
 
 }
