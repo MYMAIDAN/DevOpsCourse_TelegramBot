@@ -18,6 +18,7 @@ var rootCmd = &cobra.Command{
 
 func init() {
 	rootCmd.AddCommand(versionCmd)
+	rootCmd.AddCommand(startBot)
 }
 func Execute() {
 	if err := rootCmd.Execute(); err != nil {
