@@ -1,6 +1,8 @@
 # Telegram bot for the DevOps course from Prometheus
+t.me/DevOpsCourseGoBot
 
-
+# Important
+You need to create 'TELE_TOKEN' env variable and set it. To get this variable please ask BotFather in telegram.
 
 ## Requirement
  - Go(https://go.dev/dl/)
@@ -20,3 +22,9 @@
  source TELE_TOKEN <value>
  ./main start_bot
  ```
+
+ 
+
+
+
+ 
