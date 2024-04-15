@@ -2,7 +2,7 @@ package cmd
 
 import (
 	"fmt"
-	"main/bot"
+	"mbot/bot"
 	"os"
 
 	"github.com/spf13/cobra"

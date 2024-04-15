@@ -6,12 +6,13 @@ import (
 	"github.com/spf13/cobra"
 )
 
+var Version = "1.0.0"
+
 var versionCmd = &cobra.Command{
 	Use:   "version [string to print]",
 	Short: "Version of the application",
 	Long:  "Version of the application",
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("Telegram Bot. Version 1.0.1")
-		fmt.Println("Hello from my point of view")
+		fmt.Printf("Telegram Bot. Version: %s\n", Version)
 	},
 }

@@ -11,9 +11,6 @@ var rootCmd = &cobra.Command{
 	Use:   "tebot",
 	Short: "Test Boot for Learning Go",
 	Long:  "This is telegram bot written in Go and used only for learning porposes",
-	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("1.0.1")
-	},
 }
 
 func init() {
