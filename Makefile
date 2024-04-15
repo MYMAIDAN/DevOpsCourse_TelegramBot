@@ -35,7 +35,7 @@ arm: TARGETARCH=arm64
 arm: TARGETOS=linux
 arm: build
 
-images:
+image:
 	docker build . -t ${REGISTRY}/${APP}:${VERSION}-amd64  --build-arg TARGETARCH=amd64
 	docker build . -t ${REGISTRY}/${APP}:${VERSION}-arm64  --build-arg TARGETARCH=arm64
 
