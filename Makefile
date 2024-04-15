@@ -16,34 +16,35 @@ build: fmt get
 linux: TARGETARCH = amd64
 linux: TARGETOS = linux
 
-linux: build image
+linux: build 
 
 ## Build for the macos target
 macos: TARGETARCH=arm64
 macos: TARGETOS=darwin
 
-macos: build image
+macos: build 
 
 
 ##Build for the windows target
 windows: TARGETARCH=amd64
 windows: TARGETOS=windows
 
-windows: build image
+windows: build 
 
 arm: TARGETARCH=arm64
 arm: TARGETOS=linux
 arm: build
 
-image:
-	docker build . -t ${REGISTRY}/${APP}:${VERSION}-${TARGETARCH}  --build-arg TARGETARCH=${TARGETARCH}
+images:
+	docker build . -t ${REGISTRY}/${APP}:${VERSION}-amd64  --build-arg TARGETARCH=amd64
+	docker build . -t ${REGISTRY}/${APP}:${VERSION}-arm64  --build-arg TARGETARCH=arm64
 
 push:
-	docker push ${REGISTRY}/${APP}:${VERSION}-${TARGETARCH}
+	docker push ${REGISTRY}/${APP}:${VERSION}-arm64
+	docker push ${REGISTRY}/${APP}:${VERSION}-amd64
 
-clean:
-	rm -rf kbot
-	docker rmi ${REGISTRY}/${APP}:${VERSION}-${TARGETARCH}
 
 clean:
 	rm mbot
+	docker rmi ${REGISTRY}/${APP}:${VERSION}-arm64
+	docker rmi ${REGISTRY}/${APP}:${VERSION}-amd64
