@@ -5,10 +5,10 @@
 replicaCount: 1
 image:
   registry: "ghcr.io"
-  repository: mykhailomaidan/devopscourse_telegrambot
+  repository: mykhailo-maidan/devopscourse_telegrambot
   tag: "1.1.0-8872843"
   os: linux
-  arch: "amd64"
+  arch: amd64
 secret:
   name: "mbot"
   env: "TELE_TOKEN"
