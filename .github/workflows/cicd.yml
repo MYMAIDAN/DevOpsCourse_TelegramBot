@@ -9,6 +9,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
 
       - name: GitHub Registry Login
         uses: docker/login-action@v2
@@ -16,6 +18,13 @@ jobs:
           registry: ghcr.io
           username: ${{ secrets.USER_NAME }}
           password: ${{ secrets.GHCR_TOKEN }}
+
+      - name: Build&Push
+        env:
+          APP: "mbot"
+          REGISTRY: ${{ secrets.GH_REGISTRY_NAME }}
+        run: |
+          make image push
 
 
  
