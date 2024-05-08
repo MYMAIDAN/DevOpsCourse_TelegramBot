@@ -31,4 +31,4 @@ update_version:
     - git config user.email gitlab-bot@example.com
     - git checkout develop
     - git commit -am "Update version $VERSION"
-    - git push origin develop
+    - git push -o ci.skip "https://${GITLAB_USER_NAME}:${GIT_PUSH_TOKEN}@${CI_REPOSITORY_URL#*@}" develop
