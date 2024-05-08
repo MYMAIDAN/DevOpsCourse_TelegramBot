@@ -29,5 +29,6 @@ update_version:
     - yq -i '.image.tag=strenv(VERSION)' helm/values.yaml
     - git config user.name gitlab-ci
     - git config user.email gitlab-bot@example.com
+    - git checkout develop
     - git commit -am "Update version $VERSION"
     - git push origin develop
