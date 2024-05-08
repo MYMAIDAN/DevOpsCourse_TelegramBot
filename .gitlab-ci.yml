@@ -2,6 +2,7 @@ image: golang:latest
 
 variables:
   REGISTRY: $CI_REGISTRY_IMAGE
+  APP: mbot
 
 stages:
   - build
