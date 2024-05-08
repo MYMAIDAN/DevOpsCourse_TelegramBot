@@ -30,4 +30,4 @@ update_version:
     - git config user.name gitlab-ci
     - git config user.email gitlab-bot@example.com
     - git commit -am "Update version $VERSION"
-    - git push
+    - git push origin develop
