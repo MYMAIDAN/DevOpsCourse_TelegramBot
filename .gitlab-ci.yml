@@ -1,19 +1,33 @@
-image: golang:latest
 
 variables:
   REGISTRY: $CI_REGISTRY_IMAGE
   APP: mbot
 
 stages:
-  - build
+  - ci
+  - cd
   
 build:
   image: docker:latest
   services:
     - docker:dind
-  stage: build
+  stage: ci
   before_script:
     - apk  update && apk add make
     - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
   script:
     - make image push
+
+
+update_version:
+  image: golang:latest
+  stage: cd
+  before_script:
+    - go install github.com/mikefarah/yq/v4@latest
+  script:
+    - echo "VERSION=$(git describe --tags --abbrev=0)-$(git rev-parse --short HEAD)"
+    - yq -i '.image.tag=strenv(VERSION)' helm/values.yaml
+    - git config user.name gitlab-ci
+    - git config user.email gitlab-bot@example.com
+    - git commit -am "Update version $VERSION"
+    - git push
