@@ -6,7 +6,7 @@ replicaCount: 1
 image:
   registry: "ghcr.io"
   repository: mykhailo-maidan/devopscourse_telegrambot
-  tag: "v1.1.1-ee6a619"
+  tag: "v1.1.1-d733a41"
   os: linux
   arch: amd64
 secret:
