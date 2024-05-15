@@ -24,7 +24,7 @@ update_version:
   stage: cd
   before_script:
     - go install github.com/mikefarah/yq/v4@latest
-    - git clone -b $BRANCH --single-branch "https://${CI_BOT_NAME}:${CI_BOT_TOKEN}@${CI_SERVER_HOST}/${CI_PROJECT_PATH}.git" "${CI_COMMIT_SHA}"
+    - git clone -b develop  "https://${CI_BOT_NAME}:${CI_BOT_TOKEN}@${CI_SERVER_HOST}/${CI_PROJECT_PATH}.git" "${CI_COMMIT_SHA}"
     - cd ${CI_COMMIT_SHA}
     - git status
     # Set the displayed user with the commits that are about to be made
